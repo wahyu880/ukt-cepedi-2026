@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendaftaran UKT 2026 – Pagar Nusa Cepedi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --h:#1b4332;--hm:#2d6a4f;--hl:#40916c;--ht:#74c69d;--hp:#d8f3dc;
+  --g:#b7791f;--gt:#d97706;--bk:#060e06;--kr:#fdfaf4;--ab:#6b7280;--rd:#991b1b;
+  --bd:rgba(45,106,79,.3);--sh:0 20px 60px rgba(6,14,6,.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Crimson Pro',serif;background:var(--bk);min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px;
+  position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(27,67,50,.7) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 40% at 15% 85%,rgba(27,67,50,.35) 0%,transparent 60%)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 50px,rgba(183,121,31,.025) 50px,rgba(183,121,31,.025) 51px),
+    repeating-linear-gradient(90deg,transparent,transparent 50px,rgba(183,121,31,.025) 50px,rgba(183,121,31,.025) 51px)}
+.wrap{position:relative;z-index:1;width:100%;max-width:560px}
+.site-hdr{text-align:center;margin-bottom:28px;animation:fd .7s ease both}
+.badge{display:inline-block;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;color:var(--ht);border:1px solid rgba(116,198,157,.3);
+  padding:4px 14px;border-radius:20px;margin-bottom:12px;background:rgba(116,198,157,.07)}
+.site-hdr h1{font-family:'Cinzel',serif;font-size:clamp(22px,5vw,30px);font-weight:900;
+  color:var(--kr);letter-spacing:2px;line-height:1.15;margin-bottom:5px}
+.site-hdr h1 span{color:var(--gt)}
+.site-hdr .sub{font-style:italic;font-size:15px;color:var(--ab)}
+.orn{display:flex;align-items:center;gap:10px;margin:12px 0 6px}
+.orn::before,.orn::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(183,121,31,.5),transparent)}
+.orn span{color:var(--g);font-size:12px}
+@keyframes fd{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+.card{background:rgba(12,24,14,.88);border:1px solid rgba(45,106,79,.4);border-radius:8px;
+  box-shadow:var(--sh);overflow:hidden;backdrop-filter:blur(10px)}
+.page{display:none;animation:sli .4s cubic-bezier(.4,0,.2,1) both}
+.page.active{display:block}
+.page.back{animation:slb .4s cubic-bezier(.4,0,.2,1) both}
+@keyframes sli{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slb{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+.prog{display:flex;padding:0 24px;margin-bottom:-1px}
+.pstep{flex:1;height:3px;background:rgba(45,106,79,.2);transition:background .3s}
+.pstep.done{background:var(--ht)}.pstep.active{background:var(--gt)}
+.phdr{padding:22px 26px 18px;border-bottom:1px solid var(--bd);
+  background:linear-gradient(135deg,rgba(27,67,50,.55),rgba(12,24,14,.35))}
+.pnum{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;
+  color:var(--ht);text-transform:uppercase;margin-bottom:5px}
+.ptitle{font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:var(--kr);letter-spacing:1px;margin-bottom:3px}
+.pdesc{font-style:italic;font-size:13px;color:var(--ab)}
+.pbody{padding:22px 26px 26px}
+.ranting-grid{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+.ropt input[type=radio]{display:none}
+.rlbl{display:flex;align-items:center;gap:12px;padding:12px 15px;border-radius:6px;
+  border:1px solid rgba(45,106,79,.35);background:rgba(27,67,50,.12);
+  transition:all .2s;cursor:pointer;user-select:none}
+.rlbl:hover{border-color:var(--hl);background:rgba(27,67,50,.3)}
+.ropt input:checked+.rlbl{border-color:var(--ht);background:rgba(64,145,108,.14);
+  box-shadow:0 0 0 1px rgba(116,198,157,.18)}
+.rradio{width:17px;height:17px;border-radius:50%;flex-shrink:0;
+  border:2px solid rgba(116,198,157,.4);display:flex;align-items:center;justify-content:center;transition:border-color .2s}
+.ropt input:checked+.rlbl .rradio{border-color:var(--ht)}
+.rradio::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--ht);
+  opacity:0;transform:scale(0);transition:all .2s}
+.ropt input:checked+.rlbl .rradio::after{opacity:1;transform:scale(1)}
+.rname{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;color:var(--kr);flex:1}
+.kode-sec{background:rgba(183,121,31,.06);border:1px solid rgba(183,121,31,.2);
+  border-radius:6px;padding:15px;margin-bottom:22px}
+.klbl{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--g);margin-bottom:7px}
+.kwrap{position:relative}
+.kinp{width:100%;background:rgba(0,0,0,.4);border:1px solid rgba(183,121,31,.25);
+  border-bottom:2px solid rgba(183,121,31,.4);border-radius:4px;
+  padding:10px 42px 10px 13px;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+  letter-spacing:3px;color:var(--kr);outline:none;text-transform:uppercase;transition:all .2s}
+.kinp:focus{border-bottom-color:var(--gt);background:rgba(183,121,31,.07)}
+.kinp.err{border-color:var(--rd)!important;animation:shk .4s ease}
+.kinp.ok{border-color:var(--ht)!important}
+.eye{position:absolute;right:11px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;color:var(--ab);font-size:15px;padding:2px}
+.khint{font-size:12px;color:var(--ab);font-style:italic;margin-top:5px}
+.kerr{font-family:'Rajdhani',sans-serif;font-size:12px;color:#f87171;margin-top:5px;display:none}
+.kerr.show{display:block}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.sel-info{display:flex;align-items:center;gap:9px;background:rgba(64,145,108,.1);
+  border:1px solid rgba(116,198,157,.18);border-radius:5px;padding:9px 13px;margin-bottom:18px}
+.sel-dot{width:7px;height:7px;border-radius:50%;background:var(--ht);flex-shrink:0}
+.sel-info span{font-family:'Rajdhani',sans-serif;font-size:13px;color:var(--ht);letter-spacing:1px}
+.sel-info strong{color:var(--kr);font-size:14px}
+.field{margin-bottom:16px}
+.flbl{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:var(--ht);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.rdot{width:5px;height:5px;border-radius:50%;background:var(--gt);display:inline-block}
+.opt-tag{font-size:10px;color:var(--ab);font-weight:400;letter-spacing:1px;margin-left:3px;font-family:'Rajdhani',sans-serif}
+.fi{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--bd);
+  border-bottom:2px solid var(--hm);border-radius:4px;padding:10px 13px;
+  font-family:'Crimson Pro',serif;font-size:15px;color:var(--kr);outline:none;transition:all .2s}
+.fi:focus{border-bottom-color:var(--ht);background:rgba(27,67,50,.14)}
+.fi.err-field{border-bottom-color:var(--rd)!important}
+select.fi option{background:#111;font-family:'Rajdhani',sans-serif}
+.field-err{font-family:'Rajdhani',sans-serif;font-size:11px;color:#f87171;margin-top:4px;display:none}
+.field-err.show{display:block}
+.btn-row{display:flex;gap:9px;margin-top:4px}
+.btn{flex:1;padding:12px 18px;border-radius:5px;font-family:'Cinzel',serif;font-size:11px;
+  font-weight:700;letter-spacing:2px;cursor:pointer;border:none;text-transform:uppercase;transition:all .22s}
+.btn-p{background:linear-gradient(135deg,var(--hm),var(--h));color:var(--hp);
+  border:1px solid rgba(116,198,157,.28)}
+.btn-p:hover{background:linear-gradient(135deg,var(--hl),var(--hm));box-shadow:0 4px 18px rgba(64,145,108,.28)}
+.btn-p:disabled{opacity:.4;cursor:not-allowed}
+.btn-s{flex:none;padding:12px 16px;background:transparent;color:var(--ab);border:1px solid rgba(107,114,128,.28)}
+.btn-s:hover{border-color:var(--ab);color:var(--kr)}
+.btn-submit{background:linear-gradient(135deg,var(--g),var(--gt));color:var(--bk);font-weight:900}
+.btn-submit:hover{box-shadow:0 4px 22px rgba(217,119,6,.38);transform:translateY(-1px)}
+.btn-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.succ-body{padding:38px 26px;text-align:center}
+.succ-icon{font-size:50px;margin-bottom:14px;animation:pop .5s cubic-bezier(.4,0,.2,1) both .1s}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.succ-title{font-family:'Cinzel',serif;font-size:19px;font-weight:700;color:var(--ht);margin-bottom:7px}
+.succ-msg{font-style:italic;font-size:14px;color:var(--ab);line-height:1.6;margin-bottom:22px}
+.receipt{background:rgba(27,67,50,.18);border:1px solid var(--bd);border-radius:6px;padding:15px;text-align:left;margin-bottom:18px}
+.rc-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(45,106,79,.12);font-size:13px}
+.rc-row:last-child{border:none}
+.rc-k{color:var(--ab);font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.rc-v{color:var(--kr);font-weight:600;text-align:right}
+.dash-toggle{text-align:center;margin-top:24px}
+.btn-dash{background:rgba(183,121,31,.1);color:var(--gt);border:1px solid rgba(183,121,31,.28);
+  border-radius:5px;padding:10px 22px;font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+.btn-dash:hover{background:rgba(183,121,31,.2)}
+#dashboard{display:none;margin-top:18px;background:rgba(12,24,14,.92);
+  border:1px solid rgba(183,121,31,.28);border-radius:8px;overflow:hidden;box-shadow:var(--sh)}
+#dashboard.open{display:block}
+.dash-hdr{padding:16px 22px;border-bottom:1px solid rgba(183,121,31,.18);
+  background:linear-gradient(135deg,rgba(27,67,50,.5),rgba(12,24,14,.3));
+  display:flex;justify-content:space-between;align-items:center}
+.dash-title{font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--gt);letter-spacing:2px}
+.dash-total{font-family:'Cinzel',serif;font-size:18px;font-weight:900;color:var(--gt);
+  background:rgba(183,121,31,.1);border:1px solid rgba(183,121,31,.28);border-radius:4px;padding:3px 12px}
+.dash-body{padding:18px 22px}
+.dash-sec{margin-bottom:20px}
+.dash-sec-title{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--ht);margin-bottom:9px;
+  padding-bottom:5px;border-bottom:1px solid rgba(116,198,157,.12)}
+.bar-row{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.bar-lbl{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:600;color:var(--kr);width:95px;flex-shrink:0}
+.bar-track{flex:1;height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--hm),var(--ht));border-radius:4px;transition:width .6s ease .1s}
+.bar-num{font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--gt);width:24px;text-align:right;flex-shrink:0}
+.peserta-item{display:flex;align-items:center;gap:9px;padding:8px 11px;
+  background:rgba(27,67,50,.1);border:1px solid rgba(45,106,79,.18);border-radius:4px;margin-bottom:4px}
+.pi-num{font-family:'Cinzel',serif;font-size:11px;color:var(--ab);width:20px;flex-shrink:0}
+.pi-info{flex:1}
+.pi-nama{color:var(--kr);font-weight:600;font-size:13px}
+.pi-sub{color:var(--ab);font-size:10px;margin-top:1px}
+.pi-ranting{font-family:'Rajdhani',sans-serif;font-size:11px;color:var(--ht);letter-spacing:1px}
+.pi-sabuk{font-family:'Rajdhani',sans-serif;font-size:11px;color:var(--g)}
+.empty{text-align:center;padding:24px;color:var(--ab);font-style:italic;font-size:14px}
+.dash-ftr{padding:12px 22px;border-top:1px solid var(--bd);display:flex;justify-content:flex-end;gap:9px}
+.btn-exp{background:rgba(183,121,31,.1);border:1px solid rgba(183,121,31,.28);color:var(--gt);
+  border-radius:4px;padding:7px 14px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+.btn-exp:hover{background:rgba(183,121,31,.2)}
+.btn-clr{background:transparent;border:1px solid rgba(153,27,27,.38);color:#f87171;border-radius:4px;
+  padding:7px 14px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+.btn-clr:hover{background:rgba(153,27,27,.12)}
+.cfg-warning{background:rgba(183,121,31,.1);border:1px solid rgba(183,121,31,.3);
+  border-radius:6px;padding:12px 16px;margin-bottom:20px;display:none}
+.cfg-warning.show{display:block}
+.cfg-warning p{font-family:'Rajdhani',sans-serif;font-size:12px;color:var(--gt);letter-spacing:1px}
+@media(max-width:480px){.pbody,.phdr{padding:16px 16px}.dash-body,.dash-hdr,.dash-ftr{padding:14px 14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="site-hdr">
+  <div class="badge">Pagar Nusa · Perguruan Cepedi</div>
+  <h1>PENDAFTARAN <span>UKT 2026</span></h1>
+  <div class="sub">Ujian Kenaikan Tingkat</div>
+  <div class="orn"><span>✦</span></div>
+</div>
+
+<div class="card">
+  <div class="prog">
+    <div class="pstep active" id="ps1"></div>
+    <div class="pstep" id="ps2"></div>
+    <div class="pstep" id="ps3"></div>
+  </div>
+
+  <!-- PAGE 1 -->
+  <div class="page active" id="page1">
+    <div class="phdr">
+      <div class="pnum">Langkah 1 dari 2</div>
+      <div class="ptitle">Pilih Ranting / Rayon</div>
+      <div class="pdesc">Harap diperiksa kembali sebelum mengirimkan jawaban</div>
+    </div>
+    <div class="pbody">
+      <div class="ranting-grid">
+        <label class="ropt"><input type="radio" name="ranting" value="MASDA">
+          <div class="rlbl"><div class="rradio"></div><div class="rname">MASDA</div></div></label>
+        <label class="ropt"><input type="radio" name="ranting" value="UKASA">
+          <div class="rlbl"><div class="rradio"></div><div class="rname">UKASA</div></div></label>
+        <label class="ropt"><input type="radio" name="ranting" value="DENGOK">
+          <div class="rlbl"><div class="rradio"></div><div class="rname">DENGOK</div></div></label>
+        <label class="ropt"><input type="radio" name="ranting" value="DADAPAN">
+          <div class="rlbl"><div class="rradio"></div><div class="rname">DADAPAN</div></div></label>
+        <label class="ropt"><input type="radio" name="ranting" value="UNISLA">
+          <div class="rlbl"><div class="rradio"></div><div class="rname">UNISLA</div></div></label>
+      </div>
+      <div class="kode-sec">
+        <div class="klbl">🔑 Kode Akses Ranting</div>
+        <div class="kwrap">
+          <input class="kinp" type="password" id="kode-input" placeholder="Masukkan kode..." autocomplete="off" maxlength="10">
+          <button class="eye" type="button" id="eye-btn">👁</button>
+        </div>
+        <div class="khint">Kode diberikan oleh pelatih / pembina rantingmu</div>
+        <div class="kerr" id="kode-error"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-p" id="btn-lanjut">Lanjut →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page" id="page2">
+    <div class="phdr">
+      <div class="pnum">Langkah 2 dari 2</div>
+      <div class="ptitle">Biodata Peserta</div>
+      <div class="pdesc">Harap diperiksa kembali sebelum mengirimkan jawaban</div>
+    </div>
+    <div class="pbody">
+      <div class="sel-info">
+        <div class="sel-dot"></div>
+        <span>Ranting: <strong id="lbl-ranting">—</strong></span>
+      </div>
+      <div class="field">
+        <div class="flbl"><div class="rdot"></div>Nama Lengkap</div>
+        <input class="fi" type="text" id="f-nama" placeholder="Nama lengkap sesuai KTA...">
+        <div class="field-err" id="e-nama">Nama lengkap wajib diisi</div>
+      </div>
+      <div class="field">
+        <div class="flbl"><div class="rdot"></div>Tingkat Sabuk Saat Ini</div>
+        <select class="fi" id="f-sabuk-ini">
+          <option value="">— Pilih sabuk saat ini —</option>
+          <option>POLOS</option><option>PUTIH</option><option>HIJAU</option>
+          <option>MERAH SATU</option><option>MERAH DUA</option>
+        </select>
+        <div class="field-err" id="e-sabuk-ini">Pilih tingkat sabuk saat ini</div>
+      </div>
+      <div class="field">
+        <div class="flbl"><div class="rdot"></div>Tingkat Sabuk yang Diujikan</div>
+        <select class="fi" id="f-sabuk-uji">
+          <option value="">— Pilih sabuk diujikan —</option>
+          <option>PUTIH</option><option>HIJAU</option><option>MERAH SATU</option>
+          <option>MERAH DUA</option><option>BIRU SATU</option>
+        </select>
+        <div class="field-err" id="e-sabuk-uji">Pilih sabuk yang akan diujikan</div>
+      </div>
+      <div class="field">
+        <div class="flbl"><div class="rdot"></div>Nama Pelatih</div>
+        <input class="fi" type="text" id="f-pelatih" placeholder="Nama pelatih / pembina...">
+        <div class="field-err" id="e-pelatih">Nama pelatih wajib diisi</div>
+      </div>
+      <div class="field">
+        <div class="flbl">Nomor WhatsApp <span class="opt-tag">(opsional)</span></div>
+        <input class="fi" type="tel" id="f-wa" placeholder="08xx-xxxx-xxxx">
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-s" id="btn-back">← Kembali</button>
+        <button class="btn btn-submit" id="btn-submit">Kirim Pendaftaran ✦</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page" id="page3">
+    <div class="succ-body">
+      <div class="succ-icon">✅</div>
+      <div class="succ-title">Pendaftaran Berhasil!</div>
+      <div class="succ-msg">Data kamu telah tersimpan di database.<br>Panitia akan menghubungi via WhatsApp.<br><em>Jazakumullah khairan.</em></div>
+      <div class="receipt" id="receipt"></div>
+      <div class="btn-row">
+        <button class="btn btn-p" id="btn-lagi">+ Daftar Peserta Lain</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dash-toggle">
+  <button class="btn-dash" id="btn-dashboard">📊 Dashboard Rekap Panitia</button>
+</div>
+
+<div id="dashboard">
+  <div class="dash-hdr">
+    <div class="dash-title">✦ Rekap Pendaftaran UKT 2026</div>
+    <div class="dash-total" id="dash-total">0 Peserta</div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-sec">
+      <div class="dash-sec-title">Per Ranting</div>
+      <div id="bars-ranting"></div>
+    </div>
+    <div class="dash-sec">
+      <div class="dash-sec-title">Per Sabuk Diujikan</div>
+      <div id="bars-sabuk"></div>
+    </div>
+    <div class="dash-sec">
+      <div class="dash-sec-title">Daftar Peserta</div>
+      <div id="dash-list"></div>
+    </div>
+  </div>
+  <div class="dash-ftr">
+    <button class="btn-clr" id="btn-clear">🗑 Hapus Semua</button>
+    <button class="btn-exp" id="btn-export">⬇ Export CSV</button>
+  </div>
+</div>
+
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+// ══════════════════════════════════════════
+//  KONFIGURASI FIREBASE
+//  Ganti semua nilai GANTI_... dengan
+//  nilai dari project Firebase kamu
+// ══════════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "AIzaSyDjQBudaOSi-JyExCiOm5alpHd35mSYplo",
+  authDomain:        "ukt-cepedi-2026.firebaseapp.com",
+  databaseURL:       "https://ukt-cepedi-2026-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:         "ukt-cepedi-2026",
+  storageBucket:     "ukt-cepedi-2026.firebasestorage.app",
+  messagingSenderId: "208400007489",
+  appId:             "1:208400007489:web:5bb1b3ee44fac5b2fe21ce"
+};
+
+// Kode akses per ranting
+const KODE = {
+  MASDA:   'MSD2026',
+  UKASA:   'UKS2026',
+  DENGOK:  'DNG2026',
+  DADAPAN: 'DPN2026',
+  UNISLA:  'UNS2026',
+};
+
+// ══════════════════════════════════════════
+//  INISIALISASI FIREBASE
+// ══════════════════════════════════════════
+let db = null;
+let firebaseReady = false;
+
+try {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.database();
+  firebaseReady = true;
+} catch(e) {
+  console.log('Firebase belum dikonfigurasi:', e.message);
+}
+
+// ══════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════
+let selectedRanting = '';
+let allData = {};
+
+// ══════════════════════════════════════════
+//  NAVIGASI HALAMAN
+// ══════════════════════════════════════════
+function showPage(n, dir) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active','back'));
+  const pg = document.getElementById('page' + n);
+  if (dir === 'back') pg.classList.add('back');
+  pg.classList.add('active');
+  ['ps1','ps2','ps3'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.className = 'pstep';
+    if (i + 1 < n) el.classList.add('done');
+    else if (i + 1 === n) el.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ══════════════════════════════════════════
+//  TOGGLE KODE VISIBLE
+// ══════════════════════════════════════════
+document.getElementById('eye-btn').addEventListener('click', function() {
+  const inp = document.getElementById('kode-input');
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    this.textContent = '🙈';
+  } else {
+    inp.type = 'password';
+    this.textContent = '👁';
+  }
+});
+
+// ══════════════════════════════════════════
+//  VERIFIKASI KODE
+// ══════════════════════════════════════════
+function verifyKode() {
+  const rantingEl = document.querySelector('input[name=ranting]:checked');
+  const kodeEl    = document.getElementById('kode-input');
+  const errEl     = document.getElementById('kode-error');
+  errEl.classList.remove('show');
+  kodeEl.classList.remove('err','ok');
+
+  if (!rantingEl) {
+    errEl.textContent = '✗ Pilih ranting terlebih dahulu.';
+    errEl.classList.add('show');
+    return;
+  }
+  const ranting = rantingEl.value;
+  const kode    = kodeEl.value.trim().toUpperCase();
+  if (!kode) {
+    errEl.textContent = '✗ Masukkan kode akses.';
+    errEl.classList.add('show');
+    return;
+  }
+  if (KODE[ranting] !== kode) {
+    kodeEl.classList.add('err');
+    errEl.textContent = '✗ Kode salah. Hubungi pelatihmu untuk mendapatkan kode yang benar.';
+    errEl.classList.add('show');
+    setTimeout(() => { kodeEl.value = ''; kodeEl.classList.remove('err'); }, 1500);
+    return;
+  }
+  kodeEl.classList.add('ok');
+  selectedRanting = ranting;
+  document.getElementById('lbl-ranting').textContent = ranting;
+  setTimeout(() => showPage(2), 300);
+}
+
+document.getElementById('btn-lanjut').addEventListener('click', verifyKode);
+document.getElementById('kode-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') verifyKode();
+});
+
+// ══════════════════════════════════════════
+//  KEMBALI
+// ══════════════════════════════════════════
+document.getElementById('btn-back').addEventListener('click', function() {
+  document.getElementById('kode-input').value = '';
+  document.getElementById('kode-input').classList.remove('err','ok');
+  document.getElementById('kode-error').classList.remove('show');
+  showPage(1, 'back');
+});
+
+// ══════════════════════════════════════════
+//  VALIDASI BIODATA
+// ══════════════════════════════════════════
+function clearErr(id) {
+  document.getElementById(id).classList.remove('err-field');
+  const eid = id.replace('f-', 'e-');
+  const el  = document.getElementById(eid);
+  if (el) el.classList.remove('show');
+}
+
+['f-nama','f-sabuk-ini','f-sabuk-uji','f-pelatih'].forEach(function(id) {
+  const el = document.getElementById(id);
+  el.addEventListener('input', function() { clearErr(id); });
+  el.addEventListener('change', function() { clearErr(id); });
+});
+
+function validateBiodata() {
+  let ok = true;
+  [
+    { id:'f-nama',      eid:'e-nama',      msg:'Nama lengkap wajib diisi' },
+    { id:'f-sabuk-ini', eid:'e-sabuk-ini', msg:'Pilih sabuk saat ini' },
+    { id:'f-sabuk-uji', eid:'e-sabuk-uji', msg:'Pilih sabuk diujikan' },
+    { id:'f-pelatih',   eid:'e-pelatih',   msg:'Nama pelatih wajib diisi' },
+  ].forEach(function(c) {
+    const el  = document.getElementById(c.id);
+    const eel = document.getElementById(c.eid);
+    if (!el.value.trim()) {
+      el.classList.add('err-field');
+      eel.classList.add('show');
+      ok = false;
+    }
+  });
+  return ok;
+}
+
+// ══════════════════════════════════════════
+//  SUBMIT KE FIREBASE
+// ══════════════════════════════════════════
+document.getElementById('btn-submit').addEventListener('click', function() {
+  if (!validateBiodata()) return;
+
+  const btn = document.getElementById('btn-submit');
+  btn.disabled    = true;
+  btn.textContent = '⏳ Menyimpan...';
+
+  const entry = {
+    waktu:    new Date().toLocaleString('id-ID'),
+    ranting:  selectedRanting,
+    nama:     document.getElementById('f-nama').value.trim(),
+    sabukIni: document.getElementById('f-sabuk-ini').value,
+    sabukUji: document.getElementById('f-sabuk-uji').value,
+    pelatih:  document.getElementById('f-pelatih').value.trim(),
+    wa:       document.getElementById('f-wa').value.trim() || '-',
+  };
+
+  function tampilkanSukses(statusText, statusColor) {
+    document.getElementById('receipt').innerHTML =
+      '<div class="rc-row"><span class="rc-k">Nama</span><span class="rc-v">' + entry.nama + '</span></div>' +
+      '<div class="rc-row"><span class="rc-k">Ranting</span><span class="rc-v">' + entry.ranting + '</span></div>' +
+      '<div class="rc-row"><span class="rc-k">Sabuk Saat Ini</span><span class="rc-v">' + entry.sabukIni + '</span></div>' +
+      '<div class="rc-row"><span class="rc-k">Sabuk Diujikan</span><span class="rc-v">' + entry.sabukUji + '</span></div>' +
+      '<div class="rc-row"><span class="rc-k">Pelatih</span><span class="rc-v">' + entry.pelatih + '</span></div>' +
+      '<div class="rc-row"><span class="rc-k">WhatsApp</span><span class="rc-v">' + entry.wa + '</span></div>' +
+      '<div class="rc-row"><span class="rc-k">Status</span><span class="rc-v" style="color:' + statusColor + '">' + statusText + '</span></div>';
+    showPage(3);
+    btn.disabled    = false;
+    btn.textContent = 'Kirim Pendaftaran ✦';
+  }
+
+  if (firebaseReady && db) {
+    db.ref('pendaftaran').push(entry)
+      .then(function() {
+        tampilkanSukses('✓ Tersimpan di Database', '#74c69d');
+      })
+      .catch(function(err) {
+        // Simpan lokal jika Firebase gagal
+        simpanLokal(entry);
+        tampilkanSukses('⚠ Tersimpan Lokal (cek koneksi)', '#fbbf24');
+      });
+  } else {
+    // Firebase belum dikonfigurasi, simpan lokal
+    simpanLokal(entry);
+    tampilkanSukses('⚠ Tersimpan Lokal (Firebase belum dikonfigurasi)', '#fbbf24');
+  }
+});
+
+// ══════════════════════════════════════════
+//  SIMPAN LOKAL (cadangan)
+// ══════════════════════════════════════════
+function simpanLokal(entry) {
+  try {
+    const data = JSON.parse(localStorage.getItem('ukt2026') || '[]');
+    data.push(entry);
+    localStorage.setItem('ukt2026', JSON.stringify(data));
+  } catch(e) {}
+}
+
+function getLokal() {
+  try { return JSON.parse(localStorage.getItem('ukt2026') || '[]'); }
+  catch(e) { return []; }
+}
+
+// ══════════════════════════════════════════
+//  DAFTAR LAGI
+// ══════════════════════════════════════════
+document.getElementById('btn-lagi').addEventListener('click', function() {
+  ['f-nama','f-wa','f-pelatih'].forEach(function(id) {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('f-sabuk-ini').selectedIndex = 0;
+  document.getElementById('f-sabuk-uji').selectedIndex = 0;
+  document.querySelectorAll('.field-err').forEach(function(e) { e.classList.remove('show'); });
+  document.querySelectorAll('.fi').forEach(function(e) { e.classList.remove('err-field'); });
+  showPage(2);
+});
+
+// ══════════════════════════════════════════
+//  DASHBOARD
+// ══════════════════════════════════════════
+document.getElementById('btn-dashboard').addEventListener('click', function() {
+  const panel = document.getElementById('dashboard');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) loadDashboard();
+});
+
+function loadDashboard() {
+  if (firebaseReady && db) {
+    db.ref('pendaftaran').on('value', function(snap) {
+      allData = {};
+      if (snap.exists()) {
+        snap.forEach(function(child) {
+          allData[child.key] = child.val();
+        });
+      }
+      renderDashboard();
+    });
+  } else {
+    // Tampilkan data lokal
+    allData = {};
+    getLokal().forEach(function(item, i) {
+      allData['lokal_' + i] = item;
+    });
+    renderDashboard();
+  }
+}
+
+function renderDashboard() {
+  const rows  = Object.values(allData);
+  const total = rows.length;
+  document.getElementById('dash-total').textContent = total + ' Peserta';
+
+  const rantings  = ['MASDA','UKASA','DENGOK','DADAPAN','UNISLA'];
+  const sabukList = ['PUTIH','HIJAU','MERAH SATU','MERAH DUA','BIRU SATU'];
+  const cR = {}, cS = {};
+  rantings.forEach(function(r)  { cR[r] = 0; });
+  sabukList.forEach(function(s) { cS[s] = 0; });
+  rows.forEach(function(r) { if (cR[r.ranting]  !== undefined) cR[r.ranting]++; });
+  rows.forEach(function(r) { if (cS[r.sabukUji] !== undefined) cS[r.sabukUji]++; });
+
+  const maxR = Math.max.apply(null, Object.values(cR).concat([1]));
+  const maxS = Math.max.apply(null, Object.values(cS).concat([1]));
+
+  document.getElementById('bars-ranting').innerHTML = rantings.map(function(r) {
+    return '<div class="bar-row"><div class="bar-lbl">' + r + '</div>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + ((cR[r]/maxR)*100) + '%"></div></div>' +
+      '<div class="bar-num">' + cR[r] + '</div></div>';
+  }).join('');
+
+  document.getElementById('bars-sabuk').innerHTML = sabukList.map(function(s) {
+    return '<div class="bar-row"><div class="bar-lbl">' + s + '</div>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + ((cS[s]/maxS)*100) + '%"></div></div>' +
+      '<div class="bar-num">' + cS[s] + '</div></div>';
+  }).join('');
+
+  const listEl = document.getElementById('dash-list');
+  if (!rows.length) {
+    listEl.innerHTML = '<div class="empty">Belum ada pendaftar</div>';
+  } else {
+    listEl.innerHTML = rows.map(function(r, i) {
+      return '<div class="peserta-item">' +
+        '<div class="pi-num">' + (i+1) + '</div>' +
+        '<div class="pi-info"><div class="pi-nama">' + r.nama + '</div>' +
+        '<div class="pi-sub">' + r.waktu + '</div></div>' +
+        '<div class="pi-ranting">' + r.ranting + '</div>' +
+        '<div class="pi-sabuk">→ ' + r.sabukUji + '</div></div>';
+    }).join('');
+  }
+}
+
+// ══════════════════════════════════════════
+//  EXPORT CSV
+// ══════════════════════════════════════════
+document.getElementById('btn-export').addEventListener('click', function() {
+  const rows = Object.values(allData);
+  if (!rows.length) { alert('Belum ada data.'); return; }
+  const header = ['No','Waktu','Nama','Ranting','Sabuk Saat Ini','Sabuk Diujikan','Pelatih','WhatsApp'];
+  const csv = [header].concat(rows.map(function(r, i) {
+    return [i+1, r.waktu, r.nama, r.ranting, r.sabukIni, r.sabukUji, r.pelatih, r.wa];
+  })).map(function(r) {
+    return r.map(function(v) { return '"' + v + '"'; }).join(',');
+  }).join('\n');
+  const a    = document.createElement('a');
+  a.href     = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+  a.download = 'pendaftaran-ukt-2026.csv';
+  a.click();
+});
+
+// ══════════════════════════════════════════
+//  HAPUS SEMUA DATA
+// ══════════════════════════════════════════
+document.getElementById('btn-clear').addEventListener('click', function() {
+  if (!confirm('Hapus SEMUA data pendaftar? Tidak bisa dibatalkan!')) return;
+  if (firebaseReady && db) {
+    db.ref('pendaftaran').remove();
+  }
+  localStorage.removeItem('ukt2026');
+  allData = {};
+  renderDashboard();
+});
+</script>
+</body>
+</html>
